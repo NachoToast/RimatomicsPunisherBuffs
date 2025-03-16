@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+
+    <ThingDef ParentName="UpgradePart">
+        <defName>RimatomicsPunisherBuffs_DriveCylinders</defName>
+        <label>Drive Cylinders</label>
+        <description>Upgrade parts for Rimatomics Punishers.</description>
+        <graphicData>
+            <texPath>Rimatomics/Things/Resources/upgrades</texPath>
+        </graphicData>
+        <recipeMaker>
+            <workAmount>7000</workAmount>
+            <recipeUsers>
+                <li>TableRimatomicsMachining</li>
+            </recipeUsers>
+        </recipeMaker>
+        <costList>
+            <Plasteel>10</Plasteel>
+            <ComponentIndustrial>3</ComponentIndustrial>
+            <Chemfuel>10</Chemfuel>
+        </costList>
+    </ThingDef>
+
+    <ThingDef ParentName="UpgradePart">
+        <defName>RimatomicsPunisherBuffs_PropellantBoosters</defName>
+        <label>Propellant Boosters</label>
+        <description>Upgrade parts for Rimatomics Punishers.</description>
+        <graphicData>
+            <texPath>Rimatomics/Things/Resources/FluxBooster</texPath>
+        </graphicData>
+        <recipeMaker>
+            <workAmount>7000</workAmount>
+            <recipeUsers>
+                <li>TableRimatomicsMachining</li>
+            </recipeUsers>
+        </recipeMaker>
+        <costList>
+            <Plasteel>10</Plasteel>
+            <Gold>2</Gold>
+            <ComponentIndustrial>3</ComponentIndustrial>
+        </costList>
+    </ThingDef>
+
+</Defs>

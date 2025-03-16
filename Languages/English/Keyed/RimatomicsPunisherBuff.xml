@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LanguageData>
+    <RimatomicsPunisherBuffs_IncreaseSpread>Increase spread</RimatomicsPunisherBuffs_IncreaseSpread>
+    <RimatomicsPunisherBuffs_DecreaseSpread>Decrease spread</RimatomicsPunisherBuffs_DecreaseSpread>
+
+    <RimatomicsPunisherBuffs_IncreaseSpread_Desc>Increase the fire mission spread of this weapon</RimatomicsPunisherBuffs_IncreaseSpread_Desc>
+    <RimatomicsPunisherBuffs_DecreaseSpread_Desc>Decrease the fire mission spread of this weapon</RimatomicsPunisherBuffs_DecreaseSpread_Desc>
+
+    <RimatomicsPunisherBuffs_SpreadMin>Spread is at the minimum possible value ({0})</RimatomicsPunisherBuffs_SpreadMin>
+    <RimatomicsPunisherBuffs_SpreadMax>Spread is at the maximum possible value ({0})</RimatomicsPunisherBuffs_SpreadMax>
+
+    <RimatomicsPunisherBuffs_SpreadBasic>Spread: {0} Tiles</RimatomicsPunisherBuffs_SpreadBasic>
+    <RimatomicsPunisherBuffs_SpreadBasic_1>Spread: 1 Tile</RimatomicsPunisherBuffs_SpreadBasic_1>
+
+    <RimatomicsPunisherBuffs_SpreadAdvanced_Positive>Spread: {0} ({1} + {2}) Tiles</RimatomicsPunisherBuffs_SpreadAdvanced_Positive>
+    <RimatomicsPunisherBuffs_SpreadAdvanced_Negative>Spread: {0} ({1} - {2}) Tiles</RimatomicsPunisherBuffs_SpreadAdvanced_Negative>
+
+    <RimatomicsPunisherBuffs_ExplosionRadius>Explosion Radius: {0} Tiles ({1})</RimatomicsPunisherBuffs_ExplosionRadius>
+    <RimatomicsPunisherBuffs_ExplosionRadius_1>Explosion Radius: 1 Tile ({0})</RimatomicsPunisherBuffs_ExplosionRadius_1>
+
+</LanguageData>

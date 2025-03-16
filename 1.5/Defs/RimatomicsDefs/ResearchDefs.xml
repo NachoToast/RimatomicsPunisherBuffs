@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+
+    <!-- Drive Cylinders -->
+
+    <Def Class="Rimatomics.RimatomicResearchDef">
+        <defName>RimatomicsPunisherBuffs_DriveCylinders</defName>
+        <ResearchLabel>Drive Cylinders</ResearchLabel>
+        <UnlockStep>RimatomicsPunisherBuffs_DriveCylinders1</UnlockStep>
+        <Upgrade>true</Upgrade>
+        <part>RimatomicsPunisherBuffs_DriveCylinders</part>
+        <stats>
+            <li>No longer requires line of sight</li>
+            <li>Pulse Size +20%</li>
+        </stats>
+        <ProjTypeLabel>Upgrade</ProjTypeLabel>
+        <ResearchDesc>Hydraulic drive cylinders allow for more precise and extreme angles of fire for the RA-1802D Punisher. This improved control over barrel positioning allows for the safe use of fire missions within the local area, effectively removing the need for line of sight.</ResearchDesc>
+        <ResearchDescDisc>You can now produce drive cylinders at the Rimatomics machining table. To install them into a Punisher, select the Punisher and designate the drive cylinders for installation.\n\nDrive cylinders must be manually installed into each new Punisher.</ResearchDescDisc>
+        <price>6000</price>
+        <previewImageURL>Rimatomics/Things/Resources/upgrades</previewImageURL>
+        <Steps>
+            <li>RimatomicsPunisherBuffs_DriveCylinders1</li>
+            <li>RimatomicsPunisherBuffs_DriveCylinders2</li>
+        </Steps>
+        <prerequisites>
+            <li>ResearchDriveActuator</li>
+        </prerequisites>
+    </Def>
+
+    <Def Class="Rimatomics.ResearchStepDef">
+        <defName>RimatomicsPunisherBuffs_DriveCylinders1</defName>
+        <PointCost>2500</PointCost>
+        <label>Research drive cylinders</label>
+        <description>A skilled researcher must experiment at a weapon research bench.</description>
+        <WorkType>Research</WorkType>
+        <SkillLevel>10</SkillLevel>
+        <requiredResearchFacilities>
+            <li>WeaponsBench</li>
+        </requiredResearchFacilities>
+        <FacilityFailures>
+            <li>Failure_FacilityBreakdown</li>
+            <li>Failure_ArcDischarge</li>
+            <li>Failure_BlindingFlash</li>
+            <li>Failure_Overvoltage</li>
+        </FacilityFailures>
+    </Def>
+
+    <Def Class="Rimatomics.ResearchStepDef">
+        <defName>RimatomicsPunisherBuffs_DriveCylinders2</defName>
+        <PointCost>2000</PointCost>
+        <label>Research drive cylinders</label>
+        <description>Analyze the data gathered and finalize the designs for the drive cylinders.</description>
+        <WorkType>Research</WorkType>
+        <SkillLevel>10</SkillLevel>
+        <RecipeUnlocks>
+            <li>Make_RimatomicsPunisherBuffs_DriveCylinders</li>
+        </RecipeUnlocks>
+    </Def>
+
+    <!-- Propellant Boosters -->
+
+    <Def Class="Rimatomics.RimatomicResearchDef">
+        <defName>RimatomicsPunisherBuffs_PropellantBoosters</defName>
+        <ResearchLabel>Propellant Boosters</ResearchLabel>
+        <UnlockStep>RimatomicsPunisherBuffs_PropellantBoosters1</UnlockStep>
+        <Upgrade>true</Upgrade>
+        <part>RimatomicsPunisherBuffs_PropellantBoosters</part>
+        <stats>
+            <li>Pulse Size +200%</li>
+            <li>Range +1000 Tiles</li>
+            <li>Speed +4000%</li>
+        </stats>
+        <ProjTypeLabel>Upgrade</ProjTypeLabel>
+        <ResearchDesc>Electrically charged propellant boosters attach to sabots during firing, allowing them to cover much longer distances while maintaining accuracy.</ResearchDesc>
+        <ResearchDescDisc>You can now produce propellant boosters at the Rimatomics machining table. To install them into a Punisher, select the Punisher and designate the propellant boosters for installation.\n\nPropellant boosters must be manually installed into each new Punisher.</ResearchDescDisc>
+        <price>6000</price>
+        <previewImageURL>Rimatomics/Things/Resources/FluxBooster</previewImageURL>
+        <Steps>
+            <li>RimatomicsPunisherBuffs_PropellantBoosters1</li>
+            <li>RimatomicsPunisherBuffs_PropellantBoosters2</li>
+        </Steps>
+        <prerequisites>
+            <li>ResearchRailgun_TargetingChip</li>
+        </prerequisites>
+    </Def>
+
+    <Def Class="Rimatomics.ResearchStepDef">
+        <defName>RimatomicsPunisherBuffs_PropellantBoosters1</defName>
+        <PointCost>2500</PointCost>
+        <label>Research propellant boosters</label>
+        <description>A skilled researcher must experiment at a weapon research bench.</description>
+        <WorkType>Research</WorkType>
+        <SkillLevel>10</SkillLevel>
+        <requiredResearchFacilities>
+            <li>WeaponsBench</li>
+        </requiredResearchFacilities>
+        <FacilityFailures>
+            <li>Failure_FacilityBreakdown</li>
+            <li>Failure_Overvoltage</li>
+        </FacilityFailures>
+    </Def>
+
+    <Def Class="Rimatomics.ResearchStepDef">
+        <defName>RimatomicsPunisherBuffs_PropellantBoosters2</defName>
+        <PointCost>2000</PointCost>
+        <label>Research propellant boosters</label>
+        <description>Analyze the data gathered and finalize the designs for the propellant boosters.</description>
+        <WorkType>Research</WorkType>
+        <SkillLevel>10</SkillLevel>
+        <RecipeUnlocks>
+            <li>Make_RimatomicsPunisherBuffs_PropellantBoosters</li>
+        </RecipeUnlocks>
+    </Def>
+
+</Defs>

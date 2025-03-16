@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+    <!-- Add drive cylinders and propellant boosters as possible upgrades. -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="PPCRailgun"]/comps/li[@Class="Rimatomics.CompProperties_Upgradable"]/upgrades</xpath>
+        <value>
+            <li>
+                <project>RimatomicsPunisherBuffs_DriveCylinders</project>
+            </li>
+            <li>
+                <project>RimatomicsPunisherBuffs_PropellantBoosters</project>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Add comp for changing spread. -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="PPCRailgun"]/comps</xpath>
+        <value>
+            <li Class="RimatomicsPunisherBuffs.CompProperties_SpreadAdjustable" />
+        </value>
+    </Operation>
+
+    <!-- Fix displaying a radius of 26 when constructing a Punisher, use minRange (9.8) instead. -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="PPCRailgun"]/specialDisplayRadius</xpath>
+        <value>
+            <specialDisplayRadius>9.8</specialDisplayRadius>
+        </value>
+    </Operation>
+    
+</Patch>
