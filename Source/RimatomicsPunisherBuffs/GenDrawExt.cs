@@ -10,7 +10,7 @@ namespace RimatomicsPunisherBuffs
     {
         private static readonly Color ExplosionColor = new Color(0.8f, 0.8f, 0.4f);
 
-        private static void DrawLabel(IntVec3 cell, int offset, string label)
+        public static void DrawLabel(IntVec3 cell, int offset, string label)
         {
             Vector2 screenPos = GenMapUI.LabelDrawPosFor(new IntVec3(cell.x, cell.y, cell.z - offset));
 
@@ -115,63 +115,6 @@ namespace RimatomicsPunisherBuffs
                  zEnd: center.z - topMostLeftCell.z + spread - 1));
 
             GenDraw.DrawFieldEdges(cells, ExplosionColor);
-        }
-
-        public static void DrawSpreadLabel(Building_Railgun railgun, LocalTargetInfo target)
-        {
-            int spread = railgun.spread;
-
-            int spreadOffset = railgun.GetSpreadOffset();
-
-            string label;
-
-            if (spreadOffset == 0)
-            {
-                if (spread == 1)
-                {
-                    label = TranslationKeys.SpreadBasic_1.Translate();
-                }
-                else
-                {
-                    label = TranslationKeys.SpreadBasic.Translate(spread);
-                }
-            }
-            else
-            {
-                if (spreadOffset >= 0)
-                {
-                    label = TranslationKeys.SpreadAdvanced_Positive;
-                }
-                else
-                {
-                    label = TranslationKeys.SpreadAdvanced_Negative;
-                }
-
-                label = label.Translate(spread, spread - spreadOffset, Mathf.Abs(spreadOffset));
-            }
-
-            DrawLabel(target.Cell, spread, label);
-        }
-
-        public static void DrawExplosionRadiusLabel(Building_Railgun railgun, LocalTargetInfo target)
-        {
-            if (!railgun.HasMeaningfulProjectileRadius(out ThingDef projectile, out float radius))
-            {
-                return;
-            }
-
-            string label;
-
-            if (Mathf.Approximately(radius, 1))
-            {
-                label = TranslationKeys.ExplosionRadius_1.Translate(projectile.label);
-            }
-            else
-            {
-                label = TranslationKeys.ExplosionRadius.Translate(radius.ToStringDecimalIfSmall(), projectile.label);
-            }
-
-            DrawLabel(target.Cell, railgun.spread + Mathf.FloorToInt(radius), label);
         }
     }
 }

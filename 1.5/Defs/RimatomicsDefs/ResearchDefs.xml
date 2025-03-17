@@ -11,11 +11,10 @@
         <Upgrade>true</Upgrade>
         <part>RimatomicsPunisherBuffs_DriveCylinders</part>
         <stats>
-            <li>No longer requires line of sight</li>
             <li>Pulse Size +20%</li>
         </stats>
         <ProjTypeLabel>Upgrade</ProjTypeLabel>
-        <ResearchDesc>Hydraulic drive cylinders allow for more precise and extreme angles of fire for the RA-1802D Punisher. This improved control over barrel positioning allows for the safe use of fire missions within the local area, effectively removing the need for line of sight.</ResearchDesc>
+        <ResearchDesc>Hydraulic drive cylinders allow for more precise and extreme angles of fire for the RA-1802D Punisher. This improved control over barrel positioning allows for the safe use of fire missions within the local area.</ResearchDesc>
         <ResearchDescDisc>You can now produce drive cylinders at the Rimatomics machining table. To install them into a Punisher, select the Punisher and designate the drive cylinders for installation.\n\nDrive cylinders must be manually installed into each new Punisher.</ResearchDescDisc>
         <price>6000</price>
         <previewImageURL>Rimatomics/Things/Resources/upgrades</previewImageURL>

@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using Rimatomics;
+using RimWorld.Planet;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -18,19 +19,11 @@ namespace RimatomicsPunisherBuffs
 
             harmony.Patch(
                 original: AccessTools.Method(
-                    type: typeof(Verb),
-                    name: nameof(Verb.TryFindShootLineFromTo)),
+                    type: typeof(Building_Railgun),
+                    name: "ChoseWorldTarget"),
                 transpiler: new HarmonyMethod(
                     methodType: typeof(Patches),
-                    methodName: nameof(ReplaceVerbPropsLineOfSightReferences_Transpiler)));
-
-            harmony.Patch(
-                original: AccessTools.Method(
-                    type: typeof(Verb),
-                    name: "CanHitCellFromCellIgnoringRange"),
-                transpiler: new HarmonyMethod(
-                    methodType: typeof(Patches),
-                    methodName: nameof(ReplaceVerbPropsLineOfSightReferences_Transpiler)));
+                    methodName: nameof(ChoseWorldTarget_Transpiler)));
 
             harmony.Patch(
                 original: AccessTools.PropertyGetter(
@@ -38,7 +31,7 @@ namespace RimatomicsPunisherBuffs
                     name: nameof(Building_Railgun.PulseSize)),
                 postfix: new HarmonyMethod(
                     methodType: typeof(Patches),
-                    methodName: nameof(GetWeaponPulseSize_Postfix)));
+                    methodName: nameof(GetPulseSize_Postfix)));
 
             harmony.Patch(
                 original: AccessTools.PropertyGetter(
@@ -73,26 +66,36 @@ namespace RimatomicsPunisherBuffs
                     methodName: nameof(TraveledPctStepPerTick_Postfix)));
         }
 
-        private static IEnumerable<CodeInstruction> ReplaceVerbPropsLineOfSightReferences_Transpiler(IEnumerable<CodeInstruction> instructions)
+        private static bool CanFireMissionTargetMap(Map targetMap, Map railgunMap, Building_Railgun railgun)
         {
-            bool IsLoadFieldInstruction<T1>(CodeInstruction instruction, string operandName)
+            if (targetMap != railgunMap)
             {
-                if (instruction.opcode != OpCodes.Ldfld)
+                return true;
+            }
+
+            if (railgun.UG?.HasUpgrade(ThisDefOf.RimatomicsPunisherBuffs_DriveCylinders) == true)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private static IEnumerable<CodeInstruction> ChoseWorldTarget_Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            bool IsGetMapCall<T>(CodeInstruction instruction)
+            {
+                if (!(instruction.operand is MethodInfo methodInfo))
                 {
                     return false;
                 }
 
-                if (!(instruction.operand is FieldInfo fieldInfo))
+                if (methodInfo.DeclaringType != typeof(T))
                 {
                     return false;
                 }
 
-                if (fieldInfo.FieldType != typeof(T1))
-                {
-                    return false;
-                }
-
-                if (fieldInfo.Name != operandName)
+                if (methodInfo.Name != "get_Map")
                 {
                     return false;
                 }
@@ -104,25 +107,45 @@ namespace RimatomicsPunisherBuffs
 
             List<CodeInstruction> codes = instructions.ToList();
 
-            for (int i = 0; i < codes.Count - 1; i++)
+            for (int i = 0; i < codes.Count - 3; i++)
             {
-                if (!IsLoadFieldInstruction<VerbProperties>(codes[i], nameof(Verb.verbProps)))
+                if (codes[i].opcode != OpCodes.Callvirt)
                 {
                     continue;
                 }
 
-                if (!IsLoadFieldInstruction<bool>(codes[i + 1], nameof(VerbProperties.requireLineOfSight)))
+                if (!IsGetMapCall<MapParent>(codes[i]))
                 {
                     continue;
                 }
 
-                codes[i].opcode = OpCodes.Nop;
+                if (codes[i + 1].opcode != OpCodes.Ldarg_0)
+                {
+                    continue;
+                }
 
-                codes[i + 1].opcode = OpCodes.Call;
+                if (codes[i + 2].opcode != OpCodes.Call)
+                {
+                    continue;
+                }
 
-                codes[i + 1].operand = AccessTools.Method(
-                    type: typeof(Extensions),
-                    name: nameof(Extensions.RequiresLineOfSight));
+                if (!IsGetMapCall<Thing>(codes[i + 2]))
+                {
+                    continue;
+                }
+
+                if (codes[i + 3].opcode != OpCodes.Bne_Un_S)
+                {
+                    continue;
+                }
+
+                codes[i + 3].opcode = OpCodes.Brtrue_S;
+
+                codes.InsertRange(i + 3, new CodeInstruction[]
+                {
+                    new CodeInstruction(OpCodes.Ldarg_0),
+                    new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(Patches), nameof(CanFireMissionTargetMap))),
+                });
 
                 successfullyDidPatch = true;
 
@@ -137,7 +160,7 @@ namespace RimatomicsPunisherBuffs
             return codes.AsEnumerable();
         }
 
-        private static void GetWeaponPulseSize_Postfix(Building_EnergyWeapon __instance, ref float __result)
+        private static void GetPulseSize_Postfix(Building_Railgun __instance, ref float __result)
         {
             CompUpgradable upgradeComp = __instance?.UG;
 
@@ -167,7 +190,19 @@ namespace RimatomicsPunisherBuffs
 
         private static void GetSpread_Postfix(Building_Railgun __instance, ref int __result)
         {
-            __result += __instance.GetSpreadOffset();
+            if (__instance.UG?.HasUpgrade(DubDef.TargetingChip) != true)
+            {
+                return;
+            }
+
+            CompSpreadAdjustable comp = __instance.TryGetComp<CompSpreadAdjustable>();
+
+            if (comp == null)
+            {
+                return;
+            }
+
+            __result += comp.offset;
         }
 
         private static void ChoseWorldTarget_Postfix(Building_Railgun __instance, bool __result)
@@ -181,16 +216,24 @@ namespace RimatomicsPunisherBuffs
             {
                 GenDraw.DrawTargetHighlight(target);
 
-                GenDraw.DrawFieldEdges(new CellRect(target.Cell, __instance.spread).ToList(), Color.white);
+                GenDraw.DrawFieldEdges(new CellRect(target.Cell, __instance.spread).ToList());
 
                 GenDrawExt.DrawFireMissionExplosiveRadius(__instance, target);
             });
 
             Find.Targeter.SetOnGuiAction(delegate (LocalTargetInfo target)
             {
-                GenDrawExt.DrawSpreadLabel(__instance, target);
+                int spread = __instance.spread;
 
-                GenDrawExt.DrawExplosionRadiusLabel(__instance, target);
+                GenDrawExt.DrawLabel(target.Cell, spread, Translations.Spread(spread.ToTileString()));
+
+                if (__instance.HasMeaningfulProjectileRadius(out ThingDef projectile, out float radius))
+                {
+                    GenDrawExt.DrawLabel(
+                        cell: target.Cell,
+                        offset: spread + Mathf.FloorToInt(radius),
+                        label: Translations.ExplosionRadius(radius.ToTileString(), projectile.label));
+                }
             });
         }
 

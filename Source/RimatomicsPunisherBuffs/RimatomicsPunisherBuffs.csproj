@@ -70,7 +70,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThisDefOf.cs" />
     <Compile Include="GenDrawExt.cs" />
-    <Compile Include="TranslationKeys.cs" />
+    <Compile Include="Translations.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

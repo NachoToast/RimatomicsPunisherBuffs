@@ -2,6 +2,7 @@
 using RimWorld;
 using System;
 using System.Reflection;
+using UnityEngine;
 using Verse;
 
 namespace RimatomicsPunisherBuffs
@@ -21,23 +22,6 @@ namespace RimatomicsPunisherBuffs
         public static void SetOnGuiAction(this Targeter targeter, Action<LocalTargetInfo> highlightAction)
         {
             OnGuiActionField.SetValue(targeter, highlightAction);
-        }
-
-        public static int GetSpreadOffset(this Building_Railgun railgun)
-        {
-            if (!railgun.UG.HasUpgrade(DubDef.TargetingChip))
-            {
-                return 0;
-            }
-
-            CompSpreadAdjustable comp = railgun.TryGetComp<CompSpreadAdjustable>();
-
-            if (comp != null)
-            {
-                return comp.ConfiguredLevel;
-            }
-
-            return 0;
         }
 
         public static bool HasMeaningfulProjectileRadius(this Building_Railgun railgun, out ThingDef projectile, out float radius)
@@ -62,15 +46,24 @@ namespace RimatomicsPunisherBuffs
             return radius > 0.2f;
         }
 
-        public static bool RequiresLineOfSight(this Verb verb)
+        public static string ToTileString(this int value)
         {
-            if (verb is Verb_RimatomicsVerb rimatomicsVerb &&
-                rimatomicsVerb.GetWep?.UG?.HasUpgrade(ThisDefOf.RimatomicsPunisherBuffs_DriveCylinders) == true)
+            if (value == 1)
             {
-                return false;
+                return Translations.Tiles_1();
             }
 
-            return verb.verbProps.requireLineOfSight;
+            return Translations.Tiles(value);
+        }
+
+        public static string ToTileString(this float value)
+        {
+            if (Mathf.Approximately(value, 1))
+            {
+                return Translations.Tiles_1();
+            }
+
+            return Translations.Tiles(value.ToStringDecimalIfSmall());
         }
     }
 }
