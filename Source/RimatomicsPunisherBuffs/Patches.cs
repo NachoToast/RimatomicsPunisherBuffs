@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using Multiplayer.API;
 using Rimatomics;
 using RimWorld.Planet;
 using System.Collections.Generic;
@@ -64,6 +65,11 @@ namespace RimatomicsPunisherBuffs
                 postfix: new HarmonyMethod(
                     methodType: typeof(Patches),
                     methodName: nameof(TraveledPctStepPerTick_Postfix)));
+
+            if (MP.enabled)
+            {
+                MP.RegisterAll();
+            }
         }
 
         private static bool CanFireMissionTargetMap(Map targetMap, Map railgunMap, Building_Railgun railgun)

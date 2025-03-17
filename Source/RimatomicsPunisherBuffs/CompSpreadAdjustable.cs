@@ -1,4 +1,5 @@
-﻿using Rimatomics;
+﻿using Multiplayer.API;
+using Rimatomics;
 using RimWorld;
 using System.Collections.Generic;
 using System.Text;
@@ -19,6 +20,7 @@ namespace RimatomicsPunisherBuffs
 
         public int offset = 0;
 
+        [SyncMethod]
         private void SetOffset(int newValue)
         {
             if (offset == newValue)
