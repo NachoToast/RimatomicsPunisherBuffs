@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Drive Cylinders -->
+  <RimatomicsPunisherBuffs_DriveCylinders.label>驱动缸</RimatomicsPunisherBuffs_DriveCylinders.label>
+  <!-- EN: Upgrade parts for Rimatomics Punishers. -->
+  <RimatomicsPunisherBuffs_DriveCylinders.description>「边缘核能」磁轨炮的升级组件。</RimatomicsPunisherBuffs_DriveCylinders.description>
+  
+  <!-- EN: Propellant Boosters -->
+  <RimatomicsPunisherBuffs_PropellantBoosters.label>推进剂助推器</RimatomicsPunisherBuffs_PropellantBoosters.label>
+  <!-- EN: Upgrade parts for Rimatomics Punishers. -->
+  <RimatomicsPunisherBuffs_PropellantBoosters.description>「边缘核能」磁轨炮的升级组件。</RimatomicsPunisherBuffs_PropellantBoosters.description>
+  
+</LanguageData>

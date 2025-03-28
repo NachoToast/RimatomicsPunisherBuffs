@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Research drive cylinders -->
+  <RimatomicsPunisherBuffs_DriveCylinders1.label>驱动缸原理</RimatomicsPunisherBuffs_DriveCylinders1.label>
+  <!-- EN: A skilled researcher must experiment at a weapon research bench. -->
+  <RimatomicsPunisherBuffs_DriveCylinders1.description>由高智识的殖民者对磁轨炮进行实时观测、调试，收集数据进行分析，以求找出优化升级方案。</RimatomicsPunisherBuffs_DriveCylinders1.description>
+  
+  <!-- EN: Research drive cylinders -->
+  <RimatomicsPunisherBuffs_DriveCylinders2.label>研发驱动缸</RimatomicsPunisherBuffs_DriveCylinders2.label>
+  <!-- EN: Analyze the data gathered and finalize the designs for the drive cylinders. -->
+  <RimatomicsPunisherBuffs_DriveCylinders2.description>分析收集的数据以最终确定制作驱动缸的方案。</RimatomicsPunisherBuffs_DriveCylinders2.description>
+  
+  <!-- EN: Research propellant boosters -->
+  <RimatomicsPunisherBuffs_PropellantBoosters1.label>推进剂助推器原理</RimatomicsPunisherBuffs_PropellantBoosters1.label>
+  <!-- EN: A skilled researcher must experiment at a weapon research bench. -->
+  <RimatomicsPunisherBuffs_PropellantBoosters1.description>由高智识的殖民者对磁轨炮进行实时观测、调试，收集数据进行分析，以求找出优化升级方案。</RimatomicsPunisherBuffs_PropellantBoosters1.description>
+  
+  <!-- EN: Research propellant boosters -->
+  <RimatomicsPunisherBuffs_PropellantBoosters2.label>研发推进剂助推器</RimatomicsPunisherBuffs_PropellantBoosters2.label>
+  <!-- EN: Analyze the data gathered and finalize the designs for the propellant boosters. -->
+  <RimatomicsPunisherBuffs_PropellantBoosters2.description>分析收集的数据以最终确定制作推进剂助推器的方案。</RimatomicsPunisherBuffs_PropellantBoosters2.description>
+  
+</LanguageData>
