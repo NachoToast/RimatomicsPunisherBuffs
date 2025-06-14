@@ -23,7 +23,7 @@
             <li>RimatomicsPunisherBuffs_DriveCylinders2</li>
         </Steps>
         <prerequisites>
-            <li>ResearchDriveActuator</li>
+            <li>Railgun</li>
         </prerequisites>
     </Def>
 
