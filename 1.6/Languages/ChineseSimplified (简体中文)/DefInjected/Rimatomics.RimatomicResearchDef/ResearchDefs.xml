@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Hydraulic drive cylinders allow for more precise and extreme angles of fire for the RA-1802D Punisher. This improved control over barrel positioning allows for the safe use of fire missions within the local area. -->
+  <RimatomicsPunisherBuffs_DriveCylinders.ResearchDesc>驱动缸使RA-1802D“惩戒者”能够以更精确和极端的角度进行射击。这种对炮管位置的改进控制使得在局部区域内可以安全地执行火力任务。</RimatomicsPunisherBuffs_DriveCylinders.ResearchDesc>
+  <!-- EN: You can now produce drive cylinders at the Rimatomics machining table. To install them into a Punisher, select the Punisher and designate the drive cylinders for installation.\n\nDrive cylinders must be manually installed into each new Punisher. -->
+  <RimatomicsPunisherBuffs_DriveCylinders.ResearchDescDisc>您现在可以在「边缘核能」加工台制作驱动缸，并将其安装到「边缘核能」磁轨炮的升级组件。中，选择能量武器并指定安装驱动缸。\n\n驱动缸必须手动安装到每个新的“惩戒者”中。</RimatomicsPunisherBuffs_DriveCylinders.ResearchDescDisc>
+  <!-- EN: Drive Cylinders -->
+  <RimatomicsPunisherBuffs_DriveCylinders.ResearchLabel>驱动缸</RimatomicsPunisherBuffs_DriveCylinders.ResearchLabel>
+  <!-- EN: Pulse Size +20% -->
+  <RimatomicsPunisherBuffs_DriveCylinders.stats.0>能量消耗 +20%</RimatomicsPunisherBuffs_DriveCylinders.stats.0>
+  
+  <!-- EN: Electrically charged propellant boosters attach to sabots during firing, allowing them to cover much longer distances while maintaining accuracy. -->
+  <RimatomicsPunisherBuffs_PropellantBoosters.ResearchDesc>带电推进剂助推器在射击时附着在弹托上，使其能够在保持精度的同时覆盖更远的距离。</RimatomicsPunisherBuffs_PropellantBoosters.ResearchDesc>
+  <!-- EN: You can now produce propellant boosters at the Rimatomics machining table. To install them into a Punisher, select the Punisher and designate the propellant boosters for installation.\n\nPropellant boosters must be manually installed into each new Punisher. -->
+  <RimatomicsPunisherBuffs_PropellantBoosters.ResearchDescDisc>您现在可以在「边缘核能」加工台制作驱动缸，并将其安装到「边缘核能」磁轨炮的升级组件。中，选择能量武器并指定安装驱动缸。\n\n推进剂助推器必须手动安装到每个新的“惩戒者”中。</RimatomicsPunisherBuffs_PropellantBoosters.ResearchDescDisc>
+  <!-- EN: Propellant Boosters -->
+  <RimatomicsPunisherBuffs_PropellantBoosters.ResearchLabel>推进剂助推器</RimatomicsPunisherBuffs_PropellantBoosters.ResearchLabel>
+  <!-- EN: Pulse Size +200% -->
+  <RimatomicsPunisherBuffs_PropellantBoosters.stats.0>脉能量消耗 +200%</RimatomicsPunisherBuffs_PropellantBoosters.stats.0>
+  <!-- EN: Range +1000 Tiles -->
+  <RimatomicsPunisherBuffs_PropellantBoosters.stats.1>火力覆盖 +1000 地图格</RimatomicsPunisherBuffs_PropellantBoosters.stats.1>
+  <!-- EN: Speed +4000% -->
+  <RimatomicsPunisherBuffs_PropellantBoosters.stats.2>速度 +4000%</RimatomicsPunisherBuffs_PropellantBoosters.stats.2>
+  
+</LanguageData>

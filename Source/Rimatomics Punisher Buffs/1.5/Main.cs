@@ -1,0 +1,11 @@
+﻿global using Multiplayer.API;
+global using Rimatomics;
+global using RimWorld;
+global using RimWorld.Planet;
+global using System.Collections;
+global using System.Reflection;
+global using System.Reflection.Emit;
+global using System.Text;
+global using UnityEngine;
+global using Verse;
+global using Verse.Sound;
