@@ -131,12 +131,18 @@ internal static class Patches
                 continue;
             }
 
-            if (codes[i + 3].opcode != OpCodes.Bne_Un_S)
+            if (codes[i + 3].opcode != OpCodes.Ceq)
             {
                 continue;
             }
 
-            codes[i + 3].opcode = OpCodes.Brtrue_S;
+            if (codes[i + 6].opcode != OpCodes.Brfalse_S)
+            {
+                continue;
+            }
+
+            codes[i + 3].opcode = OpCodes.Nop;
+            codes[i + 6].opcode = OpCodes.Brtrue_S;
 
             codes.InsertRange(i + 3,
             [
